@@ -2,10 +2,10 @@ import React from 'react';
 import useFirebase from '../../hooks/useFirebase';
 
 const Login = () => {
-    const { signInWithGoogle } = useFirebase();
+    const { signInWithGoogle, user, handleSignOut } = useFirebase();
     return (
         <div>
-            <h3 className='mt-4'>Please log in</h3>
+            <h3 className='mt-4'>Please login</h3>
             <div className="container h-100 mt-4 mb-3">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-lg-12 col-xl-11">
@@ -54,7 +54,16 @@ const Login = () => {
                                             </div>
                                             <p className='text-muted'>OR</p>
 
-                                            <button onClick={signInWithGoogle} type="button" className="btn btn-primary btn-lg">Continue with Google</button>
+                                            {
+
+                                                user?.uid
+                                                    ?
+                                                    <button className="btn btn-primary btn-lg" onClick={handleSignOut}>sign out</button>
+                                                    :
+                                                    <button
+                                                        onClick=
+                                                        {signInWithGoogle}
+                                                        type="button" className="btn btn-primary btn-lg">Continue with Google</button>}
 
                                         </form>
 

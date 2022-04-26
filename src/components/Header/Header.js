@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Header = () => {
+
     return (
         <div classNameName='header'>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -13,22 +15,28 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <Link className='nav-link text-white active fs-4' to="/">Home</Link>
+                                <Link className='nav-link text-white active fs-6 me-2' to="/">Home</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className='nav-link text-white fs-6 me-2' to="/blog">Blog</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className='nav-link text-white fs-4' to="/register">Register</Link>
+                                <Link className='nav-link text-white fs-6 me-2' to="/about">About</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className='nav-link text-white fs-4' to="/login">Login</Link>
+                                <Link className='nav-link text-white fs-6 me-2' to="/register">Register</Link>
                             </li>
+
                             <li className="nav-item">
-                                <Link className='nav-link text-white fs-4' to="/checkout">Checkout</Link>
+                                <Link className='nav-link text-white fs-6 me-2' to="/checkout">Checkout</Link>
                             </li>
+
                             <li className="nav-item">
-                                <Link className='nav-link text-white fs-4' to="/blog">Blog</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className='nav-link text-white fs-4' to="/about">About</Link>
+                                {
+
+                                    <Link className='nav-link text-white fs-6 me-2' to="/login">Login</Link>
+                                }
                             </li>
 
                         </ul>
