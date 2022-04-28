@@ -1,0 +1,93 @@
+.main-banner {
+    margin-top: 0px;
+}
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
+    margin-top: 500px;
+}
+
+.style-color {
+    color: rgb(29, 27, 27);
+}
+
+
+
+
+/* --------------All media query for responsive text and image--------- */
+@media only screen and (max-width: 1312px) {
+    .carousel-caption {
+        top: 0;
+        bottom: auto;
+        margin-top: 500px;
+    }
+
+    .text-size {
+        margin-top: -250px;
+        font-size: 20px;
+    }
+}
+
+/* for mid size tabs */
+@media only screen and (max-width: 992px) {
+    .carousel-item img {
+        object-fit: cover;
+        height: 500px;
+    }
+
+    .text-size {
+        margin-top: 150px;
+        font-size: 20px;
+    }
+
+    .carousel-caption {
+        top: 0;
+        bottom: auto;
+        margin-top: 0;
+        font-size: medium;
+    }
+}
+
+/* for small size tabs */
+
+@media only screen and (max-width: 768px) {
+    .carousel-item img {
+        object-fit: cover;
+        height: 500px;
+    }
+
+    .text-size {
+        margin-top: 100px;
+        font-size: 20px;
+    }
+
+    .carousel-caption {
+        top: 0;
+        bottom: auto;
+        margin-top: 0;
+
+    }
+}
+
+/* for mobile devices */
+
+@media only screen and (max-width: 688px) {
+    .carousel-item img {
+        object-fit: cover;
+        overflow: hidden;
+        height: 500px;
+    }
+
+    .text-size {
+        margin-top: 100px;
+        font-size: 20px;
+    }
+
+    .carousel-caption {
+        top: 0;
+        bottom: auto;
+        margin-top: 0;
+
+    }
+}

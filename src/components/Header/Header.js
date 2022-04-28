@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useFirebase from '../../hooks/useFirebase';
+import './Header.css';
 
 
 const Header = () => {
-
+    const { user, handleSignOut } = useFirebase();
     return (
         <div classNameName='header'>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-color">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">Freeze Frame Photography</a>
+                    <a className="navbar-brand ms-4" href="/">Freeze Frame Photography</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -34,8 +36,11 @@ const Header = () => {
 
                             <li className="nav-item">
                                 {
-
-                                    <Link className='nav-link text-white fs-6 me-2' to="/login">Login</Link>
+                                    user?.uid
+                                        ?
+                                        <button className="btn btn-primary btn-lg fs-6 sign-out-btn " onClick={handleSignOut}>Sign out</button>
+                                        :
+                                        <Link className='nav-link text-white fs-6 me-4' to="/login">Login</Link>
                                 }
                             </li>
 
