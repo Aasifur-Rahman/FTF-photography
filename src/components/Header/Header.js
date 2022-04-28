@@ -7,7 +7,7 @@ import './Header.css';
 const Header = () => {
     const { user, handleSignOut } = useFirebase();
     return (
-        <div classNameName='header'>
+        <div className='header'>
             <nav className="navbar navbar-expand-lg navbar-dark bg-color">
                 <div className="container-fluid">
                     <a className="navbar-brand ms-4" href="/">Freeze Frame Photography</a>
@@ -38,7 +38,7 @@ const Header = () => {
                                 {
                                     user?.uid
                                         ?
-                                        <button className="btn btn-primary btn-lg fs-6 sign-out-btn " onClick={handleSignOut}>Sign out</button>
+                                        <button className="btn custom-btn btn-lg fs-6 sign-out-btn " onClick={handleSignOut}>Sign out</button>
                                         :
                                         <Link className='nav-link text-white fs-6 me-4' to="/login">Login</Link>
                                 }

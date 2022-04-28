@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import useFirebase from '../../hooks/useFirebase';
 
 const Login = () => {
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+
     const { signInWithGoogle } = useFirebase();
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        console.log(email, password);
+    }
+
+
+
     return (
         <div>
             <h3 className='mt-4'>Please login</h3>
@@ -14,14 +29,14 @@ const Login = () => {
                                 <div className="row justify-content-center">
                                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
+                                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log <span className="custom-clr">in</span> </p>
 
-                                        <form className="mx-1 mx-md-4">
+                                        <form onSubmit={handleSubmit} className="mx-1 mx-md-4">
 
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
-                                                    <input type="email" id="form3Example3c" className="form-control" placeholder='Your Email' />
+                                                    <input ref={emailRef} type="email" id="form3Example3c" className="form-control" placeholder='Your Email' required />
 
                                                 </div>
                                             </div>
@@ -29,13 +44,13 @@ const Login = () => {
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
-                                                    <input type="password" id="form3Example4c" className="form-control" placeholder='Password' />
+                                                    <input ref={passwordRef} type="password" id="form3Example4c" className="form-control" placeholder='Password' required />
 
                                                 </div>
                                             </div>
 
                                             <div className="text-center">
-                                                <p>Not a member? <a href="#!">Register</a></p>
+                                                <p>Not a member? <Link className="custom-clr" to="/register">Register</Link></p>
                                             </div>
                                             <div className="form-check d-flex justify-content-center mb-5">
                                                 <input
@@ -45,12 +60,12 @@ const Login = () => {
                                                     id="form2Example3c"
                                                 />
                                                 <label className="form-check-label" for="form2Example3">
-                                                    I agree all statements in <a href="#!">Terms of service</a>
+                                                    I agree all statements in <a className="custom-clr" href="#!">Terms of service</a>
                                                 </label>
                                             </div>
 
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button type="button" className="btn btn-primary btn-lg">Log in</button>
+                                                <button type="submit" className="btn custom-btn btn-lg">Log in</button>
                                             </div>
                                             <p className='text-muted'>OR</p>
 
@@ -58,7 +73,7 @@ const Login = () => {
                                             <button
                                                 onClick=
                                                 {signInWithGoogle}
-                                                type="button" className="btn btn-primary btn-lg">Continue with Google</button>
+                                                type="button" className="btn custom-btn btn-lg">Continue with Google</button>
 
                                         </form>
 
