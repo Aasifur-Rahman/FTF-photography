@@ -27,7 +27,7 @@ const Services = () => {
             name: "Platinum",
             price: 1000,
             img: "https://images.unsplash.com/photo-1611784728558-6c7d9b409cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-            Description: "Platinum will provide you with 15hr session of photography and cinematography with pre-wedding shoot is available in this package."
+            Description: "Platinum will provide you with 15hr session of photography and cinematography with pre-wedding shoot is also available."
         }
     ]
 

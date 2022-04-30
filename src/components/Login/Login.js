@@ -1,19 +1,57 @@
-import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
+import React, { useRef, useState } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate, } from 'react-router-dom';
+import app from '../../firebase.init';
 import useFirebase from '../../hooks/useFirebase';
+import Loading from '../Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+
+    const auth = getAuth(app);
+    const navigate = useNavigate();
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
     const { signInWithGoogle } = useFirebase();
+    const [loginError, setLoginError] = useState("")
+    const [sendPasswordResetEmail, updating, error3] = useSendPasswordResetEmail(auth);
 
     const handleSubmit = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        console.log(email, password);
+        if (error) {
+            setLoginError(error.message)
+            return
+        }
+        signInWithEmailAndPassword(email, password)
+    }
+
+    if (user) {
+        navigate('/')
+    }
+
+    const handleReset = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast("Mail Sent");
+        } else {
+            toast("Please Enter Your Email");
+        }
+
     }
 
 
@@ -47,6 +85,13 @@ const Login = () => {
                                                     <input ref={passwordRef} type="password" id="form3Example4c" className="form-control" placeholder='Password' required />
 
                                                 </div>
+                                            </div>
+
+                                            <p className='text-danger'>{loginError}</p>
+
+                                            <div className=" text-center  ">
+                                                <p>Forget Password? <button onClick={handleReset} className='btn btn-link custom-clr'>Reset Password</button> </p>
+                                                <ToastContainer />
                                             </div>
 
                                             <div className="text-center">

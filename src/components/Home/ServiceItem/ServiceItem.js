@@ -14,7 +14,7 @@ const ServiceItem = ({ items }) => {
                         <p className="card-text fs-6">{items.Description}</p>
                         <h4>Price: ${items.price}</h4>
 
-                        <div class="card-btn">
+                        <div className="card-btn">
                             <button onClick={() => navigate("/checkout")} className='btn  custom-btn fs-5 mt-3 mb-2'>Checkout</button>
                         </div>
 
