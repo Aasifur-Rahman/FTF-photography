@@ -1,6 +1,6 @@
 # Freeze Frame Photography
 
-## live page link
+## https://freeze-frame-photography.netlify.app/
 
 - Responsive and Good looking UI
 - It has lot of cool features in it like carousel, functionable buttons
