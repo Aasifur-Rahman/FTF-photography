@@ -4,7 +4,6 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import { Link, useNavigate, } from 'react-router-dom';
 import app from '../../firebase.init';
 import useFirebase from '../../hooks/useFirebase';
-import Loading from '../Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,10 +21,8 @@ const Login = () => {
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
-
     const { signInWithGoogle } = useFirebase();
     const [loginError, setLoginError] = useState("")
-    const [sendPasswordResetEmail, updating, error3] = useSendPasswordResetEmail(auth);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -34,7 +31,7 @@ const Login = () => {
 
         if (error) {
             setLoginError(error.message)
-            return
+            return;
         }
         signInWithEmailAndPassword(email, password)
     }
@@ -42,6 +39,8 @@ const Login = () => {
     if (user) {
         navigate('/')
     }
+
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
     const handleReset = async () => {
         const email = emailRef.current.value;
@@ -51,10 +50,7 @@ const Login = () => {
         } else {
             toast("Please Enter Your Email");
         }
-
     }
-
-
 
     return (
         <div>

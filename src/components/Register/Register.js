@@ -18,7 +18,7 @@ const Register = () => {
 
     let navigate = useNavigate();
 
-    const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
+    const [sendEmailVerification] = useSendEmailVerification(auth);
 
     const emailRef = useRef("")
     const passwordRef = useRef("")
@@ -30,7 +30,6 @@ const Register = () => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const name = nameRef.current.value;
         if (error) {
             setRegisterError(error.message)
             return;
